@@ -1,3 +1,5 @@
+import FaqAccordion from "./components/FaqAccordion";
+
 const WHATSAPP_NUMBER = "972526460735";
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "היי מעיין! אשמח לשמוע פרטים על ההרשמה לשיעורי המתמטיקה לשנת הלימודים הקרובה"
@@ -24,7 +26,7 @@ function WhatsAppButton({
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2.5 rounded-xl bg-[var(--color-whatsapp)] px-7 py-3.5 text-base font-semibold text-white shadow-[0_12px_28px_-12px_rgba(31,173,102,0.7)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-whatsapp-hover)] hover:shadow-[0_16px_32px_-12px_rgba(31,173,102,0.85)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sea)] ${className}`}
+      className={`btn-pulse inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[var(--color-whatsapp)] px-8 py-4 text-base font-semibold text-white shadow-[0_8px_30px_-8px_rgba(31,173,102,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[var(--color-whatsapp-hover)] hover:shadow-[0_14px_36px_-8px_rgba(31,173,102,0.75)] active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-whatsapp)] ${className}`}
     >
       <WhatsAppIcon className="h-5 w-5 shrink-0" />
       {label}
@@ -34,462 +36,248 @@ function WhatsAppButton({
 
 const groupAdvantages = [
   {
-    title: "למידה חברתית שמחזקת",
-    text: "תלמידים לומדים יחד, שואלים בלי בושה ומגלים שהם לא לבד מול החומר — והביטחון עולה.",
+    title: "מענה ממוקד ויחס אישי",
+    text: "ליווי צמוד שמאפשר להבין לעומק, בקצב הנכון עבור כל תלמיד.",
   },
   {
-    title: "קצב מותאם, לא לבד ולא המוני",
-    text: "בקבוצה קטנה אפשר לעצור, להסביר שוב ולהתקדם יחד — בלי להישאר מאחור ובלי להשתעמם.",
+    title: "למידה חברתית ומעצימה",
+    text: "לומדים יחד בסביבה בטוחה שבה מרגישים בנוח לשאול הכל, והביטחון העצמי עולה.",
   },
   {
-    title: "מוטיבציה מהסביבה",
-    text: "כשחברים מתקדמים יחד נוצרת אנרגיה חיובית: תרגול הופך למשחק, והצלחה של אחד מעודדת את כולם.",
+    title: "מוטיבציה וסביבה חיובית",
+    text: "התרגול המשותף הופך לחוויה קבוצתית מעודדת ומקדמת.",
   },
   {
-    title: "מחיר נגיש עם יחס אישי",
-    text: "מקבלים את היתרון של ליווי צמוד — במחיר חודשי ברור ונוח להורים.",
+    title: "חומרי לימוד מותאמים",
+    text: "כל תלמיד מקבל סיכומים ודפי תרגול ממוקדים שאני מכינה בהתאמה לחומר האישי שלו בכיתה.",
   },
 ];
 
-const howItWorks = [
-  {
-    step: "01",
-    title: "הבנת הצרכים",
-    text: "במפגש הראשון אנחנו מבינים בדיוק איפה האתגרים ובאיזה אופן הכי נכון לעזור לילד שלך לצמוח.",
-  },
-  {
-    step: "02",
-    title: "הלמידה השוטפת",
-    text: "מפשילים שרוולים, משלימים פערים ומבצעים מעקב צמוד אחרי ההתקדמות האישית של כל תלמיד.",
-  },
-  {
-    step: "03",
-    title: "הכנה ממוקדת למבחנים",
-    text: "בניית ביטחון, טיפים מנטליים וכלים להתמודדות עם לחץ בזמן אמת — כדי למנוע \"בלאקאאוט\" ולתרגם את הידע להצלחה במבחן.",
-  },
-];
-
-const registrationSteps = [
-  {
-    step: "01",
-    title: "הרשמה לשנה הקרובה",
-    text: "פותחים מקום בקבוצה המתאימה — לפי כיתה ולפי רמה.",
-  },
-  {
-    step: "02",
-    title: "מפגש היכרות והתאמת רמה",
-    text: "המפגש הראשון כולל מבדק קצר, כדי למקם את התלמיד בסביבה שמחזקת אותו.",
-  },
-  {
-    step: "03",
-    title: "התקדמות לאורך השנה",
-    text: "כשתלמיד מתחזק — מעבירים אותו לקבוצה חזקה יותר, כדי שימשיך לצמוח.",
-  },
-];
-
-const credentials = [
-  "בוגרת תואר ראשון (B.Sc.) במדעי המחשב בהצטיינות.",
-  "מורה פרטית למתמטיקה ומדעי המחשב — מיסודי ועד תיכון.",
-  "ניסיון רב עם יחס אישי לכל תלמיד, חיזוק והכנה למבחנים.",
-  "התאמה מלאה למערכת: עבודה מדויקת לפי תוכניות הלימוד של משרד החינוך ובתי הספר במרכז העיר.",
-];
-
-const testimonials = [
-  {
-    quote:
-      "ראיתי שיפור ניכר לא רק בציונים, אלא בעיקר בגישה של הבן שלי למקצוע — הוא הפך להרבה יותר אופטימי ובטוח בעצמו.",
-    attribution: "הורה לתלמיד",
-  },
-  {
-    quote: "קיבלנו את כל התמיכה, המקצועיות והסבלנות שהיינו צריכים באווירה נעימה ומרימה.",
-    attribution: "הורה לתלמידה",
-  },
-];
-
-const faqs = [
-  {
-    question: "מה קורה אם הילד מפספס שיעור?",
-    answer:
-      "התשלום החוגי הינו קבוע ומבטיח את מקומו של התלמיד בקבוצה, ולכן אין החזר או קיזוז על היעדרות פרטנית. עם זאת, בכל שבוע התלמידים יקבלו סיכום של החומר הנלמד וחומרי תרגול כדי לוודא שאף אחד לא נשאר מאחור.",
-  },
-  {
-    question: "איך נקבעת החלוקה לקבוצות?",
-    answer:
-      "הקבוצות מחולקות בצורה קפדנית הן לפי שכבת הגיל (כיתה) והן לפי הרמה והקצב האישי של התלמידים. מטרת מפגש ההתאמה הראשון היא לוודא שהילד ישובץ בקבוצה שבה ירגיש הכי בנוח לפרוח.",
-  },
-  {
-    question: "האם החוג מתאים גם לילדים שמאוד מתקשים וגם לילדים שרוצים להצטיין?",
-    answer:
-      "לגמרי. בזכות הפורמט המצומצם, אני בונה קבוצות ייעודיות לחיזוק וסגירת פערים, לצד קבוצות נפרדות של העשרה ומצוינות לתלמידים שרוצים לרוץ קדימה מעבר לחומר של הכיתה.",
-  },
-];
 
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
+      {/* ─── Hero ─────────────────────────────────────────────── */}
       <section className="relative isolate min-h-[100svh] overflow-hidden text-white">
         <div className="absolute inset-0 animate-soft-zoom overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/hero-classroom.jpg"
             alt=""
-            className="h-full w-full scale-110 object-cover object-[center_35%] blur-[3px]"
+            fetchPriority="high"
+            className="h-full w-full scale-110 object-cover object-[center_35%] blur-[2px]"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-l from-[rgba(19,78,72,0.93)] via-[rgba(19,78,72,0.78)] to-[rgba(20,42,40,0.55)]" />
-        <div className="hero-grid absolute inset-0 opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-l from-[var(--color-dark)]/95 via-[var(--color-dark)]/82 to-[var(--color-dark)]/55" />
+        <div className="hero-grid absolute inset-0 opacity-20" />
+        {/* Ambient floating blobs */}
+        <div className="blob-1 pointer-events-none absolute right-[14%] top-[22%] h-80 w-80 rounded-full bg-emerald-500/8 blur-[90px]" aria-hidden="true" />
+        <div className="blob-2 pointer-events-none absolute bottom-[20%] left-[16%] h-64 w-64 rounded-full bg-teal-400/6 blur-[70px]" aria-hidden="true" />
+        <div className="blob-3 pointer-events-none absolute bottom-[40%] right-[45%] h-52 w-52 rounded-full bg-green-300/5 blur-[60px]" aria-hidden="true" />
 
-        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-6 pb-16 pt-10 sm:px-8 sm:pb-20 lg:justify-center lg:pb-24">
-          <p className="animate-rise inline-flex w-fit items-center whitespace-nowrap rounded-lg bg-white/12 px-3.5 py-1.5 text-sm font-medium tracking-wide text-white/95 ring-1 ring-white/20 backdrop-blur-sm">
+        <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col justify-end px-6 pb-20 pt-12 sm:px-10 sm:pb-28 lg:justify-center lg:pb-0">
+          {/* Label pill */}
+          <p className="animate-rise inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/55 backdrop-blur-sm">
             נפתחה ההרשמה לשנת הלימודים הקרובה
           </p>
-          <p className="animate-rise-delay-1 mt-6 whitespace-nowrap font-[family-name:var(--font-rubik)] text-[clamp(1.35rem,5.2vw,4.5rem)] font-medium tracking-tight">
+
+          {/* Massive headline — font-black for maximum impact */}
+          <h1 className="animate-rise-delay-1 mt-6 font-[family-name:var(--font-rubik)] text-[clamp(1.9rem,5vw,4rem)] font-black leading-[1.1] tracking-tight">
             לומדים מתמטיקה ביחד
-          </p>
-          <h1 className="animate-rise-delay-2 mt-5 whitespace-nowrap font-[family-name:var(--font-rubik)] text-[clamp(0.95rem,3.4vw,2.35rem)] font-medium leading-none text-white/95">
-            הרגע שבו המתמטיקה הופכת מובנת – קרוב מתמיד.
           </h1>
-          <p className="animate-rise-delay-3 mt-5 whitespace-nowrap text-[clamp(0.78rem,2.4vw,1.25rem)] leading-none text-white/80">
-            למידה חווייתית וחברתית בקבוצות קטנות במרכז תל אביב, בהתאמה מלאה לדרישות משרד החינוך.
+
+          {/* Subtitle — font-light creates weight contrast */}
+          <p className="animate-rise-delay-2 mt-5 font-[family-name:var(--font-rubik)] text-[clamp(1.1rem,2.6vw,1.8rem)] font-light leading-relaxed text-white/65">
+            שיעורים פרטיים וקבוצות קטנות במרכז תל אביב
           </p>
-          <div className="mt-9 animate-rise-delay-3">
+
+          {/* Intro text */}
+          <p className="animate-rise-delay-2 mt-5 max-w-xl text-[clamp(0.875rem,1.4vw,1rem)] leading-loose text-white/50">
+            שמי מעיין, בוגרת תואר ראשון במדעי המחשב בהצטיינות.<br />
+            בעלת 5 שנות ניסיון בליווי והוראת תלמידים מהיסודי ועד הבגרויות.<br />
+            אני מאמינה שמתמטיקה לומדים באווירה נעימה ובגובה העיניים.<br />
+            מזמינה אתכם ללימודים בקבוצות קטנות או בפורמט פרטני במרכז תל אביב.<br />
+            ליווי ממוקד חד/דו-שבועי לאורך השנה, שמעניק לילד שלכם בסיס חזק, כלים להתמודדות עם החומר וביטחון עצמי מלא בדרך להצלחה.
+          </p>
+
+          <div className="animate-rise-delay-3 mt-10">
             <WhatsAppButton label="להרשמה בוואטסאפ" />
           </div>
         </div>
       </section>
 
-      {/* Challenge + solution */}
-      <section className="bg-[var(--color-foam)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-5xl">
-          <div className="max-w-3xl">
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              למה זה קורה?
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
-            <div>
-              <h3 className="font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
-                האתגר בבית הספר
-              </h3>
-              <p className="mt-4 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-                עם מעל 35 תלמידים בכיתה ומורה לחוץ שצריך להספיק את החומר, כמעט
-                בלתי אפשרי להעניק למידה מותאמת אישית. השיטה של בית הספר פשוט לא
-                מתאימה לכולם.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
-                הפתרון אצלנו
-              </h3>
-              <p className="mt-4 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-                כאן אנחנו נכנסים לתמונה. אצלנו לא רק פותרים תרגילים בצורה טכנית —
-                אנחנו מפתחים את היכולות האישיות של הילד, מקנים לו בסיס חזק וכלים
-                להתמודד עם 100% מהחומר, כדי שיגיע עם ביטחון עצמי מלא למבחן.
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-14 max-w-3xl font-[family-name:var(--font-rubik)] text-2xl font-medium leading-snug text-[var(--color-sea-deep)] sm:text-3xl">
-            הרגע הזה שהחומר הופך מובן והתרגיל נפתר — קרוב מתמיד.
-          </p>
-        </div>
-      </section>
-
-      {/* About */}
-      <section className="bg-[var(--color-mist)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-          <div className="relative mx-auto w-full max-w-sm lg:mx-0">
+      {/* ─── About & Approach ─────────────────────────────────── */}
+      <section className="bg-[var(--color-surface)] px-6 py-28 sm:px-10 sm:py-36">
+        <div className="mx-auto grid max-w-5xl items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-20">
+          {/* Photo */}
+          <div data-reveal="" className="relative mx-auto aspect-square w-full max-w-[260px] lg:mx-0">
             <div
-              className="animate-drift absolute -inset-4 -z-10 rounded-[2rem] bg-[var(--color-sand)]/80 blur-2xl"
+              className="animate-drift absolute -inset-8 -z-10 rounded-full bg-[var(--color-accent-bg)] blur-3xl"
               aria-hidden="true"
             />
-            <div className="overflow-hidden rounded-[1.75rem] bg-[var(--color-foam)] shadow-[0_24px_60px_-28px_rgba(20,42,40,0.45)]">
+            <div className="h-full w-full overflow-hidden rounded-full shadow-[0_24px_60px_-16px_rgba(13,43,40,0.30)] ring-4 ring-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/maayan.jpg"
-                alt="מעיין — מורה פרטית למתמטיקה ומדעי המחשב"
-                className="aspect-[4/5] h-full w-full object-cover object-[center_18%]"
+                alt="מעיין, מורה פרטית למתמטיקה ומדעי המחשב"
+                loading="lazy"
+                className="h-full w-full object-cover object-[center_18%]"
               />
             </div>
           </div>
 
-          <div>
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              היכרות קצרה
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)] sm:text-4xl">
-              היי לכולם! שמי מעיין
+          {/* Text */}
+          <div data-reveal="" data-reveal-delay="150">
+            <p className="text-sm font-semibold text-[var(--color-accent)]">היכרות קצרה</p>
+            <h2 className="mt-4 font-[family-name:var(--font-rubik)] text-4xl font-black leading-tight text-[var(--color-ink)] sm:text-5xl">
+              קצת עליי
+              <br />
+              והגישה שלי
             </h2>
-            <div className="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              <p>
-                בוגרת תואר ראשון במדעי המחשב בהצטיינות. מורה פרטית למתמטיקה
-                ומדעי המחשב לגילאי יסודי עד תיכון — עם ניסיון רב ויחס אישי לכל
-                תלמיד.
-              </p>
-              <p>
-                מזמינה אתכם לפנות אליי לשיעורים פרטיים, חיזוק, הכנה למבחנים ועוד —
-                באווירה נעימה ותומכת.
-              </p>
-              <p>
-                זה הזמן לחזק את היכולות לקראת סוף השנה ולצמצם פערים בחופש הגדול,
-                כדי להגיע מוכנים לשנה הבאה.
-              </p>
-            </div>
+            <p className="mt-8 text-lg leading-[1.85] text-[var(--color-ink-soft)]">
+              בעלת ניסיון עשיר בליווי תלמידים מיסודי ועד הצלחה בבגרויות בתיכון.
+              <br />
+              הלימודים משלבים חיזוק של השליטה ביסודות המתמטיים יחד עם אסטרטגיות למידה מותאמות אישית.
+              <br />
+              שיטות לימודים יחודיות ומציאת &quot;טריקים&quot; שיעזרו באופן מותאם לתלמיד.
+              <br />
+              העבודה נעשית בצמוד לתוכניות הלימוד של משרד החינוך, כדי להבטיח חיבור מלא בין החומר שנלמד לנעשה בכיתה.
+            </p>
 
-            <div className="mt-10 border-t border-[var(--color-sand)] pt-8">
-              <h3 className="font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
-                למה ללמוד איתי?
-              </h3>
-              <ul className="mt-5 space-y-3.5">
-                {credentials.map((item) => (
-                  <li key={item} className="flex gap-3 text-[var(--color-ink-soft)]">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-leaf)]"
-                      aria-hidden="true"
-                    />
-                    <span className="leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          </div>
+        </div>
+
+        {/* ── Process Timeline ────────────────────────────────── */}
+        <div data-reveal="" className="mx-auto mt-16 max-w-5xl">
+          <p className="mb-10 text-sm font-semibold text-[var(--color-accent)]">איך זה עובד?</p>
+          <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {/* Connecting line — desktop only */}
+            <div
+              className="absolute right-[12.5%] left-[12.5%] top-7 hidden h-px bg-[var(--color-border)] lg:block"
+              aria-hidden="true"
+            />
+            {[
+              "שליחת הודעה בוואטסאפ",
+              "מפגש בדיקת רמה",
+              "שיוך לקבוצה המתאימה",
+              "תחילת המפגשים",
+            ].map((label, i) => (
+              <div key={label} className="flex flex-col items-center gap-4 text-center">
+                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)] font-[family-name:var(--font-rubik)] text-sm font-black text-white shadow-md ring-4 ring-[var(--color-surface)]">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <div className="w-full rounded-2xl border border-[var(--color-border)] bg-white p-5 shadow-sm">
+                  <p className="text-sm font-semibold leading-snug text-[var(--color-ink)]">{label}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Method + group advantages */}
-      <section className="relative overflow-hidden bg-[var(--color-foam)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="relative mx-auto max-w-5xl">
-          <div className="max-w-3xl">
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              שיטת הלימוד
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)] sm:text-4xl">
-              למה דווקא בקבוצה קטנה?
+      {/* ─── Why Small Groups ─────────────────────────────────── */}
+      <section className="bg-white px-6 py-28 sm:px-10 sm:py-36">
+        <div className="mx-auto max-w-5xl">
+          <div data-reveal="" className="max-w-2xl">
+            <p className="text-sm font-semibold text-[var(--color-accent)]">שיטת הלימוד</p>
+            <h2 className="mt-4 font-[family-name:var(--font-rubik)] text-4xl font-black leading-tight text-[var(--color-ink)] sm:text-5xl">
+              היתרונות בלמידה
+              <br />
+              בקבוצה קטנה
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              אנחנו מלווים את התלמידים יד ביד בדרך להצלחה. השילוב של קבוצה קטנה
-              ומענה ממוקד מאפשר להם להבין מתמטיקה, ועל הדרך גם לחייך.
-            </p>
           </div>
 
-          <div className="mt-14 grid gap-10 sm:grid-cols-2">
-            {groupAdvantages.map((item) => (
-              <div key={item.title}>
-                <h3 className="font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
+          <div className="mt-16 grid gap-5 sm:grid-cols-2">
+            {groupAdvantages.map((item, i) => (
+              <div
+                key={item.title}
+                data-reveal=""
+                data-reveal-delay={String(i * 120)}
+                className="group rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl"
+              >
+                <span className="font-[family-name:var(--font-rubik)] text-4xl font-black leading-none text-[var(--color-accent)]/12 select-none" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 font-[family-name:var(--font-rubik)] text-xl font-bold text-[var(--color-ink)]">
                   {item.title}
                 </h3>
                 <p className="mt-3 leading-relaxed text-[var(--color-ink-soft)]">{item.text}</p>
               </div>
             ))}
           </div>
-
-          <div className="mt-16 max-w-3xl border-t border-[var(--color-sand)] pt-12">
-            <h3 className="font-[family-name:var(--font-rubik)] text-2xl font-medium text-[var(--color-ink)]">
-              חומרי לימוד מותאמים אישית
-            </h3>
-            <p className="mt-4 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              כל תלמיד מקבל חומרי עזר, דפי תרגול ממוקדים וסיכומים שאני מכינה
-              בהתאמה מדויקת לחומר הנלמד בכיתה שלו. אין צורך ברכישת ספרים נוספים —
-              אני דואגת להכל.
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="bg-[var(--color-mist)] px-6 py-24 sm:px-8 sm:py-28">
+      {/* ─── Pricing & Location ───────────────────────────────── */}
+      <section className="bg-[var(--color-surface)] px-6 py-28 sm:px-10 sm:py-36">
         <div className="mx-auto max-w-5xl">
-          <div className="max-w-3xl">
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              איך זה עובד
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)] sm:text-4xl">
-              מהשיעור הראשון ועד המבחן
-            </h2>
-          </div>
+          <div className="grid gap-16 md:grid-cols-2 md:gap-20">
+            {/* Price */}
+            <div data-reveal="">
+              <p className="text-sm font-semibold text-[var(--color-accent)]">מחיר חודשי</p>
+              <h2 className="mt-4 font-[family-name:var(--font-rubik)] text-4xl font-black text-[var(--color-ink)] sm:text-5xl">
+                השקעה פשוטה
+                <br />
+                וברורה
+              </h2>
+              <p className="mt-10 font-[family-name:var(--font-rubik)] text-[clamp(4.5rem,12vw,8rem)] font-black leading-none tracking-tight text-[var(--color-accent)]">
+                ₪500
+              </p>
+              <p className="mt-4 text-[var(--color-ink-soft)]">
+                לחודש לכל תלמיד · מחיר קבוע וברור
+              </p>
+            </div>
 
-          <ol className="mt-14 grid gap-10 md:grid-cols-3">
-            {howItWorks.map((item) => (
-              <li key={item.step}>
-                <p className="font-[family-name:var(--font-rubik)] text-sm font-medium text-[var(--color-leaf)]">
-                  {item.step}
-                </p>
-                <h3 className="mt-2 font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-[var(--color-ink-soft)]">{item.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Value / future */}
-      <section className="bg-[var(--color-sea-deep)] px-6 py-20 text-white sm:px-8 sm:py-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-rubik)] text-2xl font-medium leading-snug sm:text-3xl">
-            הצלחה במתמטיקה היא לא רק ציון על דף — היא משפיעה באופן ישיר על עתידו
-            התעסוקתי, האקדמי והכלכלי של הילד שלך.
-          </p>
-        </div>
-      </section>
-
-      {/* Registration */}
-      <section className="bg-[var(--color-foam)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-5xl">
-          <div className="max-w-3xl">
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              הרשמה לשנת הלימודים הקרובה
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)] sm:text-4xl">
-              מתחילים נכון — עם התאמה מדויקת
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              כרגע מתקיימת הרשמה לשנת הלימודים הבאה. הקבוצות מחולקות לפי כיתות
-              ולפי רמות, כדי שכל תלמיד ילמד בסביבה שמתאימה לו ותחזק אותו — לא
-              תסכל אותו ולא תעכב אותו.
-            </p>
-          </div>
-
-          <ol className="mt-14 grid gap-10 md:grid-cols-3">
-            {registrationSteps.map((item) => (
-              <li key={item.step}>
-                <p className="font-[family-name:var(--font-rubik)] text-sm font-medium text-[var(--color-leaf)]">
-                  {item.step}
-                </p>
-                <h3 className="mt-2 font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-[var(--color-ink-soft)]">{item.text}</p>
-              </li>
-            ))}
-          </ol>
-
-          <p className="mt-12 max-w-3xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-            חשוב לי שהתלמיד יהיה במקום הנכון עבורו. אם לאורך השנה הוא מתחזק —
-            מעבירים אותו לקבוצה חזקה יותר, כדי שהאתגר יישאר מדויק וההתקדמות תמשיך.
-          </p>
-        </div>
-      </section>
-
-      {/* Location + trust */}
-      <section className="bg-[var(--color-mist)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-5xl gap-16 md:grid-cols-2 md:gap-12">
-          <div>
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              מיקום
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)]">
-              במרכז תל אביב
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              השיעורים יתקיימו במרכז תל אביב. המיקום המדויק ייקבע בהתאם לכמות
-              הנרשמים — כדי למצוא את המקום האולטימטיבי לנוחות ההורים ולנוחות
-              התלמידים.
-            </p>
-          </div>
-          <div>
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              אמינות מקצועית
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)]">
-              בתי ספר ומשרד החינוך
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              ההיכרות עם בתי הספר במרכז העיר, יחד עם עבודה צמודה לפי דרישות משרד
-              החינוך, מבטיחה שהשיעורים מחברים בין מה שנלמד בחוג לבין מה שנדרש
-              בכיתה — בצורה מסודרת, ברורה ומקצועית.
-            </p>
+            {/* Location */}
+            <div data-reveal="" data-reveal-delay="150" className="md:border-r md:border-[var(--color-border)] md:pr-20">
+              <p className="text-sm font-semibold text-[var(--color-accent)]">מיקום</p>
+              <h2 className="mt-4 font-[family-name:var(--font-rubik)] text-4xl font-black leading-tight text-[var(--color-ink)] sm:text-5xl">
+                במרכז
+                <br />
+                תל אביב
+              </h2>
+              <p className="mt-8 text-lg leading-[1.85] text-[var(--color-ink-soft)]">
+                השיעורים יתקיימו במרכז תל אביב (מיקום מדויק ייקבע בהתאם לנוחות
+                הנרשמים).
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-[var(--color-foam)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-5xl">
-          <div className="max-w-3xl">
-            <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-              מה אומרים ההורים
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)] sm:text-4xl">
-              שינוי שמרגישים גם בבית
-            </h2>
-          </div>
-
-          <div className="mt-14 grid gap-12 md:grid-cols-2 md:gap-16">
-            {testimonials.map((item) => (
-              <blockquote key={item.quote}>
-                <p className="font-[family-name:var(--font-rubik)] text-xl font-medium leading-relaxed text-[var(--color-ink)] sm:text-2xl">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-                <footer className="mt-5 text-[var(--color-ink-soft)]">— {item.attribution}</footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Price */}
-      <section className="bg-[var(--color-mist)] px-6 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-            מחיר חודשי
-          </p>
-          <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium text-[var(--color-ink)] sm:text-4xl">
-            השקעה פשוטה וברורה
-          </h2>
-          <p className="mt-10 font-[family-name:var(--font-rubik)] text-6xl font-medium tracking-tight text-[var(--color-sea-deep)] sm:text-7xl">
-            ₪500
-          </p>
-          <p className="mt-3 text-lg text-[var(--color-ink-soft)]">לחודש · לכל תלמיד</p>
-          <p className="mx-auto mt-6 max-w-md text-[var(--color-ink-soft)]">
-            מחיר חודשי קבוע, בלי הפתעות — כדי שתוכלו להתמקד במה שחשוב: ההתקדמות של
-            הילד.
-          </p>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-[var(--color-foam)] px-6 py-24 sm:px-8 sm:py-28">
+      {/* ─── FAQ ──────────────────────────────────────────────── */}
+      <section className="bg-white px-6 py-28 sm:px-10 sm:py-36">
         <div className="mx-auto max-w-3xl">
-          <p className="font-[family-name:var(--font-rubik)] text-sm font-medium tracking-wide text-[var(--color-leaf)]">
-            שאלות נפוצות
-          </p>
-          <h2 className="mt-3 font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug text-[var(--color-ink)] sm:text-4xl">
-            תשובות לשאלות שהורים שואלים
-          </h2>
-
-          <div className="mt-12 divide-y divide-[var(--color-sand)] border-y border-[var(--color-sand)]">
-            {faqs.map((item) => (
-              <div key={item.question} className="py-8">
-                <h3 className="font-[family-name:var(--font-rubik)] text-xl font-medium text-[var(--color-ink)]">
-                  {item.question}
-                </h3>
-                <p className="mt-3 leading-relaxed text-[var(--color-ink-soft)]">{item.answer}</p>
-              </div>
-            ))}
+          <div data-reveal="">
+            <p className="text-sm font-semibold text-[var(--color-accent)]">שאלות נפוצות</p>
+            <h2 className="mt-4 font-[family-name:var(--font-rubik)] text-4xl font-black leading-tight text-[var(--color-ink)] sm:text-5xl">
+              תשובות לשאלות
+              <br />
+              שהורים שואלים
+            </h2>
           </div>
+          <FaqAccordion />
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="relative overflow-hidden bg-[var(--color-sea-deep)] px-6 py-24 text-white sm:px-8 sm:py-28">
+      {/* ─── Final CTA ────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-dark)] px-6 py-28 text-white sm:px-10 sm:py-36">
         <div className="hero-grid absolute inset-0 opacity-20" aria-hidden="true" />
-        <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="font-[family-name:var(--font-rubik)] text-3xl font-medium leading-snug sm:text-4xl">
-            רוצים לשריין מקום לשנה הקרובה?
+        <div data-reveal="" className="relative mx-auto max-w-2xl text-center">
+          <h2 className="font-[family-name:var(--font-rubik)] text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+            רוצים לשריין מקום
+            <br />
+            לשנה הקרובה?
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/75">
-            שלחו הודעה בוואטסאפ — נתחיל ממפגש היכרות והתאמת רמה, ונמצא יחד את
+          <p className="mx-auto mt-6 max-w-md text-lg font-light leading-loose text-white/55">
+            שלחו הודעה בוואטסאפ, נתחיל ממפגש היכרות והתאמת רמה ונמצא יחד את
             הקבוצה שתתאים לילד שלכם.
           </p>
-          <div className="mt-9 flex flex-col items-center gap-4">
-            <WhatsAppButton label="שלחו הודעה למעיין" />
+          <div className="mt-10 flex flex-col items-center gap-4">
+            <WhatsAppButton label="שליחת הודעה למעיין" />
             <a
-              href="tel:0526460735"
-              className="text-sm text-white/60 transition hover:text-white"
+              href="tel:+972526460735"
+              className="text-sm text-white/35 transition-all duration-300 ease-out hover:text-white/65"
             >
               או התקשרו: 052-646-0735
             </a>
@@ -497,7 +285,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[var(--color-sea-deep)] px-6 pb-10 text-center text-sm text-white/45">
+      <footer className="border-t border-white/5 bg-[var(--color-dark)] px-6 pb-10 pt-6 text-center text-sm text-white/25">
         <p>מעיין · שיעורי מתמטיקה בקבוצות קטנות · מרכז תל אביב</p>
       </footer>
     </main>

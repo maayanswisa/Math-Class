@@ -1,14 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #142a28;
-  --color-ink-soft: #3d4f4c;
-  --color-mist: #eef5f2;
-  --color-foam: #f7fbf9;
-  --color-sea: #1f6b63;
-  --color-sea-deep: #134e48;
-  --color-leaf: #2d8a7a;
-  --color-sand: #d4e4df;
+  /* Text */
+  --color-ink: #111827;
+  --color-ink-soft: #4b5563;
+  --color-ink-muted: #9ca3af;
+
+  /* Surfaces */
+  --color-surface: #faf9f7;
+  --color-border: #e8e4dc;
+
+  /* Brand accent — deep sophisticated teal */
+  --color-accent: #1a5c52;
+  --color-accent-bg: #edf4f2;
+
+  /* Dark hero / CTA sections */
+  --color-dark: #0d2b28;
+
+  /* WhatsApp */
   --color-whatsapp: #1fad66;
   --color-whatsapp-hover: #189655;
 }
@@ -20,19 +29,19 @@
 
   body {
     color: var(--color-ink);
-    background: var(--color-foam);
+    background: var(--color-surface);
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-sea) 25%, white);
+    background: color-mix(in srgb, var(--color-accent) 18%, white);
   }
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(1.25rem);
+    transform: translateY(1.5rem);
   }
   to {
     opacity: 1;
@@ -46,13 +55,13 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-14px);
   }
 }
 
 @keyframes soft-zoom {
   from {
-    transform: scale(1.06);
+    transform: scale(1.08);
   }
   to {
     transform: scale(1);
@@ -60,34 +69,71 @@
 }
 
 .animate-rise {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
 .animate-rise-delay-1 {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
 }
-
 .animate-rise-delay-2 {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
-
 .animate-rise-delay-3 {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
 }
-
 .animate-drift {
-  animation: drift 7s ease-in-out infinite;
+  animation: drift 8s ease-in-out infinite;
 }
-
 .animate-soft-zoom {
-  animation: soft-zoom 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: soft-zoom 2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ── Scroll reveal ───────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero ambient blobs ──────────────────────────────────── */
+.blob-1 { animation: blob-float-1 14s ease-in-out infinite; }
+.blob-2 { animation: blob-float-2 18s ease-in-out infinite; }
+.blob-3 { animation: blob-float-3 11s ease-in-out infinite; }
+
+@keyframes blob-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(28px, -32px) scale(1.08); }
+  66%       { transform: translate(-18px, 18px) scale(0.94); }
+}
+@keyframes blob-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%      { transform: translate(-28px, 22px) scale(1.1); }
+  80%      { transform: translate(18px, -14px) scale(0.93); }
+}
+@keyframes blob-float-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(22px, 26px) scale(1.06); }
+}
+
+/* ── WhatsApp button pulse glow ─────────────────────────── */
+@keyframes wa-glow {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(31, 173, 102, 0)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(31, 173, 102, 0.5)); }
+}
+.btn-pulse {
+  animation: wa-glow 2.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -96,7 +142,16 @@
   .animate-rise-delay-2,
   .animate-rise-delay-3,
   .animate-drift,
-  .animate-soft-zoom {
+  .animate-soft-zoom,
+  .blob-1,
+  .blob-2,
+  .blob-3,
+  .btn-pulse {
     animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

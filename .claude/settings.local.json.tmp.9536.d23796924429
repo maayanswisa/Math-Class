@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "PowerShell(Get-Process *)",
+      "PowerShell(Get-CimInstance *)",
+      "PowerShell(Get-NetTCPConnection *)",
+      "Bash(taskkill *)",
+      "PowerShell(Get-ItemProperty -Path \"C:\\\\Users\\\\Maayan Swisa\\\\Desktop\" -ErrorAction SilentlyContinue | Select-Object FullName, Attributes; Write-Host \"---\"; $env:OneDrive; Write-Host \"---\"; if \\(Test-Path \"$env:OneDrive\\\\Desktop\"\\) { \"Desktop appears to be under OneDrive: $env:OneDrive\\\\Desktop\" } else { \"Desktop not under OneDrive path\" })",
+      "PowerShell(try { Get-MpPreference -ErrorAction Stop | Select-Object DisableRealtimeMonitoring, ExclusionPath } catch { \"Could not query Defender preferences: $_\" })"
+    ]
+  }
+}

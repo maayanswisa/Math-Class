@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Assistant, Rubik } from "next/font/google";
 import "./globals.css";
+import ScrollAnimations from "./components/ScrollAnimations";
 
 const rubik = Rubik({
   subsets: ["hebrew", "latin"],
@@ -27,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl" className={`${rubik.variable} ${assistant.variable}`}>
-      <body className="font-[family-name:var(--font-assistant)] antialiased">{children}</body>
+      <body className="font-[family-name:var(--font-assistant)] antialiased">
+        {children}
+        <ScrollAnimations />
+      </body>
     </html>
   );
 }
