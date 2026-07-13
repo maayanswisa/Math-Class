@@ -2,17 +2,19 @@
 
 @theme {
   /* Text */
-  --color-ink: #111827;
-  --color-ink-soft: #4b5563;
+  --color-ink: #1a3d4a;
+  --color-ink-soft: #5a6f7a;
   --color-ink-muted: #9ca3af;
 
   /* Surfaces */
-  --color-surface: #faf9f7;
-  --color-border: #e8e4dc;
+  --color-surface: #ffffff;
+  --color-surface-alt: #eef3f6;
+  --color-border: #d9e3e8;
 
-  /* Brand accent — deep sophisticated teal */
-  --color-accent: #1a5c52;
-  --color-accent-bg: #edf4f2;
+  /* Brand accent — soft teal */
+  --color-accent: #2a7a7a;
+  --color-accent-deep: #1a4d56;
+  --color-accent-bg: #e6f2f1;
 
   /* Dark hero / CTA sections */
   --color-dark: #0d2b28;
@@ -36,6 +38,48 @@
   ::selection {
     background: color-mix(in srgb, var(--color-accent) 18%, white);
   }
+}
+
+.page-soft {
+  position: relative;
+  background-color: #ffffff;
+}
+
+.section-alt {
+  background-color: var(--color-surface-alt);
+}
+
+.title-underline {
+  display: block;
+  width: 2.75rem;
+  height: 0.28rem;
+  margin-top: 0.75rem;
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+.check-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--color-border);
+  border-radius: 1.15rem;
+  box-shadow: 0 1px 2px rgba(26, 77, 86, 0.03);
+}
+
+.step-card {
+  background: #ffffff;
+  border: 1px solid rgba(217, 227, 232, 0.9);
+  border-radius: 1.15rem;
+  box-shadow: 0 1px 3px rgba(26, 77, 86, 0.04);
+}
+
+.gentle-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(26, 77, 86, 0.04);
 }
 
 @keyframes rise {
@@ -112,6 +156,10 @@
 .blob-2 { animation: blob-float-2 18s ease-in-out infinite; }
 .blob-3 { animation: blob-float-3 11s ease-in-out infinite; }
 
+.math-float-a { animation: math-float-1 9s ease-in-out infinite; }
+.math-float-b { animation: math-float-2 12s ease-in-out infinite; }
+.math-float-c { animation: math-float-3 10s ease-in-out infinite; }
+
 @keyframes blob-float-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33%       { transform: translate(28px, -32px) scale(1.08); }
@@ -125,6 +173,19 @@
 @keyframes blob-float-3 {
   0%, 100% { transform: translate(0, 0); }
   50%      { transform: translate(22px, 26px) scale(1.06); }
+}
+
+@keyframes math-float-1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(4deg); }
+}
+@keyframes math-float-2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(10px) rotate(-5deg); }
+}
+@keyframes math-float-3 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-8px) scale(1.06); }
 }
 
 /* ── WhatsApp button pulse glow ─────────────────────────── */
@@ -146,6 +207,9 @@
   .blob-1,
   .blob-2,
   .blob-3,
+  .math-float-a,
+  .math-float-b,
+  .math-float-c,
   .btn-pulse {
     animation: none;
   }
