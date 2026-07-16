@@ -48,27 +48,23 @@ function WhatsAppButton({
 
 const formatCards = [
   {
-    title: "קבוצות קטנות",
-    text: "למידה משותפת בקבוצות קטנות, בהתאם לרמה ולשכבת הגיל.",
-  },
-  {
     title: "שיעורים פרטניים",
-    text: "ליווי אישי ממוקד, בקצב ובהתאמה מלאה לתלמיד.",
+    text: "ליווי אישי ממוקד, בקצב ובהתאמה מלאה לתלמיד. אני מגיעה אליכם, השיעורים מתקיימים בבית התלמיד לנוחות מקסימאלית.",
   },
   {
-    title: "מרכז תל אביב",
-    text: "מיקום מדויק ייקבע בהתאם לנרשמים.",
+    title: "קבוצות קטנות",
+    text: "למידה משותפת בקבוצות קטנות, בהתאם לרמה ולשכבת הגיל. המפגשים יתקיימו במרכז תל אביב.",
   },
   {
     title: "לכל הרמות",
-    text: "מהיסודי ועד הבגרות — התאמה אישית לרמה ולקצב של כל תלמיד/ה.",
+    text: "מהיסודי ועד הבגרות, התאמה אישית לרמה ולקצב של כל תלמיד ותלמידה.",
   },
 ];
 
 const processSteps = [
   {
     title: "צרו איתי קשר",
-    text: "שלחו הודעה ב-WhatsApp או התקשרו — ונפתח יחד את תהליך ההרשמה.",
+    text: "שלחו הודעה בוואטסאפ או התקשרו ונפתח יחד את תהליך ההרשמה.",
   },
   {
     title: "מפגש התאמה",
@@ -80,7 +76,7 @@ const processSteps = [
   },
   {
     title: "תחילת המפגשים",
-    text: "מתחילים ללמוד — בצורה מסודרת, רציפה וממוקדת.",
+    text: "מתחילים ללמוד בצורה מסודרת, רציפה וממוקדת.",
   },
 ];
 
@@ -169,7 +165,7 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="animate-rise-delay-1 text-sm font-medium text-white/55">
+          <p className="registration-pulse text-sm font-medium text-white sm:text-base">
             נפתחה ההרשמה לשנת הלימודים הקרובה
           </p>
 
@@ -199,7 +195,7 @@ export default function Home() {
           <div className="mt-8 space-y-4 text-base leading-[1.85] text-[var(--color-ink-soft)]">
             <p>
               בוגרת תואר ראשון במדעי המחשב בהצטיינות, עם חמש שנות ניסיון בהוראת
-              מתמטיקה — מהיסודי ועד הבגרות.
+              מתמטיקה מהיסודי ועד הבגרות.
             </p>
             <p>
               בשיעורים שלנו נלמד מתמטיקה מהבסיס בשילוב אסטרטגיות למידה
@@ -216,14 +212,7 @@ export default function Home() {
       {/* ─── Formats ──────────────────────────────────────────── */}
       <section className="bg-white px-6 pb-20 sm:px-10 sm:pb-24">
         <div className="mx-auto max-w-4xl">
-          <div data-reveal="" className="mb-10">
-            <h2 className="font-[family-name:var(--font-rubik)] text-3xl font-semibold text-[var(--color-accent-deep)] sm:text-4xl">
-              איך לומדים אצלנו
-            </h2>
-            <span className="title-underline" aria-hidden="true" />
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+          <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">
             {formatCards.map((item, i) => (
               <div
                 key={item.title}
@@ -251,15 +240,12 @@ export default function Home() {
       {/* ─── Process ──────────────────────────────────────────── */}
       <section className="section-alt px-6 py-20 sm:px-10 sm:py-24">
         <div className="mx-auto max-w-5xl">
-          <div data-reveal="" className="mb-12">
-            <h2 className="font-[family-name:var(--font-rubik)] text-3xl font-semibold text-[var(--color-accent-deep)] sm:text-4xl">
-              מה סדר ההליך
-            </h2>
-            <span className="title-underline" aria-hidden="true" />
-            <p className="mt-4 max-w-md text-base text-[var(--color-ink-soft)]">
-              ארבעה שלבים פשוטים עד לתחילת הלימודים
-            </p>
-          </div>
+          <p
+            data-reveal=""
+            className="mb-12 font-[family-name:var(--font-rubik)] text-2xl font-semibold text-[var(--color-accent-deep)] sm:text-3xl"
+          >
+            ארבעה שלבים פשוטים עד לתחילת הלימודים
+          </p>
 
           <ol className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {processSteps.map((step, i) => (
@@ -340,12 +326,12 @@ export default function Home() {
             לתיאום שיחה ופרטים נוספים
           </h2>
           <div className="mt-10 flex flex-col items-center gap-4">
-            <WhatsAppButton label="ליצירת קשר ב-WhatsApp" />
+            <WhatsAppButton label="ליצירת קשר בוואטסאפ" />
             <a
               href="tel:+972526460735"
               className="text-sm text-white/35 transition-colors duration-300 hover:text-white/60"
             >
-              052-646-0735
+              0526460735
             </a>
           </div>
         </div>
@@ -360,7 +346,7 @@ export default function Home() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="יצירת קשר ב-WhatsApp"
+        aria-label="יצירת קשר בוואטסאפ"
         className="fixed bottom-5 left-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-whatsapp)] text-white shadow-[0_8px_24px_-6px_rgba(31,173,102,0.65)] transition-transform duration-300 hover:scale-105 hover:bg-[var(--color-whatsapp-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-whatsapp)] sm:bottom-6 sm:left-6 sm:h-14 sm:w-14"
       >
         <WhatsAppIcon className="h-6 w-6 sm:h-7 sm:w-7" />

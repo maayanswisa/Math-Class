@@ -11,7 +11,7 @@
   --color-surface-alt: #eef3f6;
   --color-border: #d9e3e8;
 
-  /* Brand accent — soft teal */
+  /* Brand accent soft teal */
   --color-accent: #2a7a7a;
   --color-accent-deep: #1a4d56;
   --color-accent-bg: #e6f2f1;
@@ -129,6 +129,24 @@
 }
 .animate-soft-zoom {
   animation: soft-zoom 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes registration-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.registration-pulse {
+  animation:
+    rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both,
+    registration-pulse 2.2s ease-in-out 1.2s infinite;
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
 }
 
 .hero-grid {
@@ -345,6 +363,7 @@
   .animate-rise-delay-3,
   .animate-drift,
   .animate-soft-zoom,
+  .registration-pulse,
   .blob-1,
   .blob-2,
   .blob-3,
