@@ -80,6 +80,47 @@ const processSteps = [
   },
 ];
 
+const pricingPlans = [
+  {
+    title: "שיעור פרטני (1 על 1)",
+    price: "200 ₪",
+    priceNote: "למפגש של 60 דקות",
+    bullets: [
+      "למידה אישית וממוקדת בבית התלמיד",
+      "קצב מותאם אישית וסגירת פערי למידה מהשורש",
+      "הכנה ממוקדת למבחנים, עבודות ובגרויות",
+      "אידיאלי לבניית ביטחון עצמי במתמטיקה",
+      "גמישות בתיאום מועדים לפי הנוחות שלכם",
+      "מעקב שוטף אחרי התקדמות והתאמת תוכנית הלמידה",
+      "הטבה מיוחדת: שיעור כפול / שני אחים ברצף ב 380 ₪ (במקום 400 ₪)",
+    ],
+    cta: "תיאום מפגש התאמה",
+    message:
+      "שלום מעיין, אשמח לתאם מפגש התאמה לשיעור פרטני במתמטיקה.",
+    featured: true,
+    badge: "מיקוד אישי",
+  },
+  {
+    title: "קבוצות למידה קטנות",
+    price: "500 ₪",
+    priceNote: "תשלום חודשי קבוע",
+    bullets: [
+      "קבוצות איכותיות של 4 עד 5 משתתפים",
+      "כל מפגש נמשך 60 דקות, ביום ובשעה קבועים",
+      "הלמידה מתקיימת בספרייה או בבית תמי",
+      "פתיחת הקבוצה מותנית במספר מינימלי של נרשמים",
+      "ליווי עקבי ומניעת פערים לאורך שנת הלימודים",
+      "דינמיקה קבוצתית מעודדת ומפרה",
+      "תשלום מראש לחודש",
+    ],
+    cta: "בדיקת זמינות בקבוצות",
+    message:
+      "שלום מעיין, אשמח לבדוק זמינות לקבוצות למידה קטנות במתמטיקה.",
+    featured: false,
+    badge: "משתלם ועקבי",
+  },
+];
+
 const testimonials = [
   {
     sender: "אמא",
@@ -318,8 +359,106 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── Pricing ──────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-surface-alt)] px-6 py-14 sm:px-10 sm:py-16">
+        <div className="relative mx-auto max-w-3xl">
+          <div data-reveal="" className="mb-8 text-center">
+            <h2 className="font-[family-name:var(--font-rubik)] text-2xl font-semibold text-[var(--color-accent-deep)] sm:text-3xl">
+              מסלולים ותמחור
+            </h2>
+            <span className="title-underline mx-auto" aria-hidden="true" />
+            <p className="mx-auto mt-3 max-w-md text-sm text-[var(--color-ink-soft)]">
+              בחרו את המסלול שמתאים לקצב, ליעדים ולסגנון הלמידה שלכם
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+            {pricingPlans.map((plan, i) => {
+              const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plan.message)}`;
+              return (
+                <article
+                  key={plan.title}
+                  data-reveal=""
+                  data-reveal-delay={String(i * 90)}
+                  className={`pricing-card flex flex-col p-4 sm:p-5 ${
+                    plan.featured ? "pricing-card--featured" : ""
+                  }`}
+                >
+                  <div className="mb-3 flex items-start justify-between gap-2">
+                    <div>
+                      <span
+                        className={`inline-flex rounded-full px-2.5 py-0.5 text-[0.7rem] font-medium ${
+                          plan.featured
+                            ? "bg-[var(--color-accent)] text-white"
+                            : "bg-[var(--color-accent-bg)] text-[var(--color-accent-deep)]"
+                        }`}
+                      >
+                        {plan.badge}
+                      </span>
+                      <h3 className="mt-2 font-[family-name:var(--font-rubik)] text-base font-semibold text-[var(--color-accent-deep)] sm:text-lg">
+                        {plan.title}
+                      </h3>
+                    </div>
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl font-[family-name:var(--font-rubik)] text-sm font-medium ${
+                        plan.featured
+                          ? "bg-[var(--color-accent-deep)] text-white"
+                          : "bg-[var(--color-accent-bg)] text-[var(--color-accent)]"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {plan.featured ? "∑" : "π"}
+                    </span>
+                  </div>
+
+                  <div className="mb-4 border-b border-[var(--color-border)] pb-3">
+                    <p className="font-[family-name:var(--font-rubik)] text-xl font-semibold tracking-tight text-[var(--color-accent-deep)] sm:text-2xl">
+                      {plan.price}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-[var(--color-ink-soft)]">
+                      {plan.priceNote}
+                    </p>
+                  </div>
+
+                  <ul className="mb-5 flex flex-1 flex-col gap-2">
+                    {plan.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="flex items-start gap-2 text-xs leading-relaxed text-[var(--color-ink)] sm:text-sm"
+                      >
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-bg)] text-[var(--color-accent)]">
+                          <CheckIcon />
+                        </span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium tracking-wide transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:text-sm ${
+                      plan.featured
+                        ? "bg-[var(--color-whatsapp)] text-white hover:bg-[var(--color-whatsapp-hover)] focus-visible:outline-[var(--color-whatsapp)]"
+                        : "bg-[var(--color-accent-deep)] text-white hover:bg-[var(--color-accent)] focus-visible:outline-[var(--color-accent-deep)]"
+                    }`}
+                  >
+                    <WhatsAppIcon className="h-3.5 w-3.5 shrink-0" />
+                    {plan.cta}
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Contact ──────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[var(--color-dark)] px-6 py-20 text-white sm:px-10 sm:py-28">
+      <section
+        id="contact"
+        className="relative overflow-hidden bg-[var(--color-dark)] px-6 py-20 text-white sm:px-10 sm:py-28"
+      >
         <div className="hero-grid absolute inset-0 opacity-10" aria-hidden="true" />
         <div data-reveal="" className="relative mx-auto max-w-xl text-center">
           <h2 className="font-[family-name:var(--font-rubik)] text-3xl font-medium leading-tight sm:text-4xl">
