@@ -84,6 +84,66 @@ const processSteps = [
   },
 ];
 
+const testimonials = [
+  {
+    sender: "אמא",
+    side: "sent" as const,
+    time: "14:32",
+    color: "#25D366",
+    text: "אני ממליצה בכל ליבי על מעיין. מעיין מלמדת את שני הילדים שלי בשנתיים האחרונות.\n\nבתקופה הזו חלה התקדמות עצומה ביכולות המתמטיקה שלהם.\n\nמעיין היא גם מורה נהדרת עם המון סבלנות והבנה במתמטיקה. וגם בעלת אישיות נעימה ורגישה. הילדים נהנים מהשיעורים שלה ומצפים להם.\n\nובזכותה, הבן שלי התקבל לתוכנית בר אילן!",
+  },
+  {
+    sender: "אמא",
+    side: "received" as const,
+    time: "09:18",
+    color: "#34B7F1",
+    text: "מעין המופלאה\n\nתודה רבה על ההשקעה והטמעת המתמטיקה אצל בתי, התוצאות ניכרות בציונים וציפייה לשיעורים איתך",
+  },
+  {
+    sender: "אמא",
+    side: "sent" as const,
+    time: "16:05",
+    color: "#E91E63",
+    text: "מעיין מלווה את ביתי בת ה10 בשנה החולפת במסירות, מקצועיות וסבלנות אין קיץ.\n\nריכזנו בידיה את כל המטלות הלימודיות והדבר מוכיח את עצמו באופן נהדר הן מבחינת ההצלחה במקצוע, הן ברמת הביטחון ותחושת המסוגלות של ביתנו והן מבחינת הראש השקט שלנו כהורים.\n\nלמעיין דרכים יצירתיות, שיטות מעולות ונועם אישי יוצא דופן שגורם לביתנו להתמסר לשיעורים. היא רצינית ואחראית , תמיד מתעניינת אחרי מבחן/הגשת מטלה לימודית משמעותית וניכר שאכפת לה והיא עושה את עבודה מכל הלב. אנחנו לבטח נמשיך עימה לשנה נוספת.\n\nממליצה בחום❤️",
+  },
+  {
+    sender: "אבא",
+    side: "received" as const,
+    time: "11:47",
+    color: "#9C27B0",
+    text: "הגענו למעיין כשהבן שלי היה בטוח שמתמטיקה פשוט \"לא בשבילו\".\n\nתוך כמה מפגשים היא הצליחה לעשות שינוי מטורף. פתאום הוא ניגש לשיעורי בית בלי דרמות, עם ביטחון עצמי גבוה והבנה אמיתית של החומר.\n\nממליץ בחום לכל הורה שמחפש ליווי מקצועי ואכפתי.",
+  },
+  {
+    sender: "אמא",
+    side: "sent" as const,
+    time: "20:21",
+    color: "#FF9800",
+    text: "אם אתם מחפשים מורה שמשלבת מקצועיות יחד עם קשר אישי ואכפתיות, מעיין היא הכתובת.\n\nהבת שלי עשתה איתה קפיצה מטורפת, הביטחון שלה עלה פלאים, ועברה את הבגרות בציון מעולה. תודה על הכל!",
+  },
+  {
+    sender: "אבא",
+    side: "received" as const,
+    time: "13:09",
+    color: "#00BCD4",
+    text: "מעיין היא פשוט נכס. היא מנגישה את המתמטיקה בצורה הכי ברורה וסבלנית.\n\nהילד שלנו סוף סוף מבין את החומר לעומק ולא רק משנן נוסחאות. רואים את השינוי גם בציונים וגם בגישה ללמידה. ממליצים בכל לב.",
+  },
+];
+
+function DoubleCheckIcon() {
+  return (
+    <svg className="wa-ticks h-[14px] w-[18px]" viewBox="0 0 16 11" fill="none" aria-hidden="true">
+      <path
+        d="M11.07 1.14a.6.6 0 01.04.85L6.55 7.2a.6.6 0 01-.88.03L3.2 4.72a.6.6 0 01.85-.85l1.97 1.97 4.16-4.66a.6.6 0 01.89-.04z"
+        fill="currentColor"
+      />
+      <path
+        d="M14.57 1.14a.6.6 0 01.04.85L10.05 7.2a.6.6 0 01-.88.03l-.62-.64a.6.6 0 01.04-.85.6.6 0 01.84.04l.2.2 4.05-4.54a.6.6 0 01.89-.04z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <main>
@@ -221,6 +281,54 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* ─── Testimonials ─────────────────────────────────────── */}
+      <section className="bg-white px-6 py-20 sm:px-10 sm:py-24">
+        <div className="mx-auto max-w-2xl">
+          <div data-reveal="" className="mb-10">
+            <h2 className="font-[family-name:var(--font-rubik)] text-3xl font-semibold text-[var(--color-accent-deep)] sm:text-4xl">
+              מה הורים מספרים
+            </h2>
+            <span className="title-underline" aria-hidden="true" />
+          </div>
+
+          <div data-reveal="" className="wa-chat" dir="rtl">
+            <div className="wa-thread">
+              {testimonials.map((item, i) => {
+                const isSent = item.side === "sent";
+                return (
+                  <div
+                    key={`${item.sender}-${item.time}-${i}`}
+                    data-reveal=""
+                    data-reveal-delay={String(i * 70)}
+                    className={`wa-row ${isSent ? "wa-row--sent" : "wa-row--received"}`}
+                  >
+                    <span
+                      className="wa-avatar"
+                      style={{ backgroundColor: item.color }}
+                      aria-hidden="true"
+                    >
+                      א
+                    </span>
+                    <div
+                      className={`wa-bubble ${isSent ? "wa-bubble--sent" : "wa-bubble--received"}`}
+                    >
+                      <p className="wa-sender" style={{ color: item.color }}>
+                        {item.sender}
+                      </p>
+                      <p className="whitespace-pre-line text-[var(--color-ink)]">{item.text}</p>
+                      <div className="wa-meta">
+                        <span className="wa-time">{item.time}</span>
+                        <DoubleCheckIcon />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
