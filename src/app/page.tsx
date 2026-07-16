@@ -83,8 +83,6 @@ const processSteps = [
 const pricingPlans = [
   {
     title: "שיעור פרטני (1 על 1)",
-    price: "200 ₪",
-    priceNote: "למפגש של 60 דקות",
     bullets: [
       "למידה אישית וממוקדת בבית התלמיד",
       "קצב מותאם אישית וסגירת פערי למידה מהשורש",
@@ -92,7 +90,7 @@ const pricingPlans = [
       "אידיאלי לבניית ביטחון עצמי במתמטיקה",
       "גמישות בתיאום מועדים לפי הנוחות שלכם",
       "מעקב שוטף אחרי התקדמות והתאמת תוכנית הלמידה",
-      "הטבה מיוחדת: שיעור כפול / שני אחים ברצף ב 380 ₪ (במקום 400 ₪)",
+      "אפשרות לשיעור כפול או שני אחים ברצף",
     ],
     cta: "תיאום מפגש התאמה",
     message:
@@ -102,8 +100,6 @@ const pricingPlans = [
   },
   {
     title: "קבוצות למידה קטנות",
-    price: "500 ₪",
-    priceNote: "תשלום חודשי קבוע",
     bullets: [
       "קבוצות איכותיות של 4 עד 5 משתתפים",
       "כל מפגש נמשך 60 דקות, ביום ובשעה קבועים",
@@ -111,13 +107,12 @@ const pricingPlans = [
       "פתיחת הקבוצה מותנית במספר מינימלי של נרשמים",
       "ליווי עקבי ומניעת פערים לאורך שנת הלימודים",
       "דינמיקה קבוצתית מעודדת ומפרה",
-      "תשלום מראש לחודש",
     ],
     cta: "בדיקת זמינות בקבוצות",
     message:
       "שלום מעיין, אשמח לבדוק זמינות לקבוצות למידה קטנות במתמטיקה.",
     featured: false,
-    badge: "משתלם ועקבי",
+    badge: "עקבי ומפרה",
   },
 ];
 
@@ -364,7 +359,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-3xl">
           <div data-reveal="" className="mb-8 text-center">
             <h2 className="font-[family-name:var(--font-rubik)] text-2xl font-semibold text-[var(--color-accent-deep)] sm:text-3xl">
-              מסלולים ותמחור
+              מסלולים
             </h2>
             <span className="title-underline mx-auto" aria-hidden="true" />
             <p className="mx-auto mt-3 max-w-md text-sm text-[var(--color-ink-soft)]">
@@ -384,7 +379,7 @@ export default function Home() {
                     plan.featured ? "pricing-card--featured" : ""
                   }`}
                 >
-                  <div className="mb-3 flex items-start justify-between gap-2">
+                  <div className="mb-4 flex items-start justify-between gap-2">
                     <div>
                       <span
                         className={`inline-flex rounded-full px-2.5 py-0.5 text-[0.7rem] font-medium ${
@@ -409,15 +404,6 @@ export default function Home() {
                     >
                       {plan.featured ? "∑" : "π"}
                     </span>
-                  </div>
-
-                  <div className="mb-4 border-b border-[var(--color-border)] pb-3">
-                    <p className="font-[family-name:var(--font-rubik)] text-xl font-semibold tracking-tight text-[var(--color-accent-deep)] sm:text-2xl">
-                      {plan.price}
-                    </p>
-                    <p className="mt-1 text-xs leading-relaxed text-[var(--color-ink-soft)]">
-                      {plan.priceNote}
-                    </p>
                   </div>
 
                   <ul className="mb-5 flex flex-1 flex-col gap-2">
